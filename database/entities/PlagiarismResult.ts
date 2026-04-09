@@ -2,18 +2,18 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn } f
 import type { Assignment } from "./Assignment";
 import type { Submission } from "./Submission";
 
-@Entity()
+@Entity("plagiarism_result")
 export class PlagiarismResult {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @ManyToOne("Assignment")
+  @ManyToOne("assignment")
   assignment!: Assignment;
 
-  @ManyToOne("Submission", (submission: any) => submission.plagiarismResultsA)
+  @ManyToOne("submission", (submission: any) => submission.plagiarismResultsA)
   submissionA!: Submission;
 
-  @ManyToOne("Submission", (submission: any) => submission.plagiarismResultsB)
+  @ManyToOne("submission", (submission: any) => submission.plagiarismResultsB)
   submissionB!: Submission;
 
   @Column("float")

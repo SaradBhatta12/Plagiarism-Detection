@@ -3,15 +3,15 @@ import type { User } from "./User";
 import type { Assignment } from "./Assignment";
 import type { PlagiarismResult } from "./PlagiarismResult";
 
-@Entity()
+@Entity("submission")
 export class Submission {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @ManyToOne("Assignment", (assignment: any) => assignment.submissions)
+  @ManyToOne("assignment", (assignment: any) => assignment.submissions)
   assignment!: Assignment;
 
-  @ManyToOne("User", (user: any) => user.submissions)
+  @ManyToOne("user", (user: any) => user.submissions)
   student!: User;
 
   @Column()
@@ -23,9 +23,9 @@ export class Submission {
   @CreateDateColumn()
   submittedAt!: Date;
 
-  @OneToMany("PlagiarismResult", (result: any) => result.submissionA)
+  @OneToMany("plagiarism_result", (result: any) => result.submissionA)
   plagiarismResultsA!: PlagiarismResult[];
 
-  @OneToMany("PlagiarismResult", (result: any) => result.submissionB)
+  @OneToMany("plagiarism_result", (result: any) => result.submissionB)
   plagiarismResultsB!: PlagiarismResult[];
 }

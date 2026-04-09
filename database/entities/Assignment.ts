@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, CreateDat
 import type { User } from "./User";
 import type { Submission } from "./Submission";
 
-@Entity()
+@Entity("assignment")
 export class Assignment {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
@@ -13,10 +13,10 @@ export class Assignment {
   @Column({ nullable: true })
   description!: string;
 
-  @ManyToOne("User", (user: any) => user.assignments)
+  @ManyToOne("user", (user: any) => user.assignments)
   teacher!: User;
 
-  @OneToMany("Submission", (submission: any) => submission.assignment)
+  @OneToMany("submission", (submission: any) => submission.assignment)
   submissions!: Submission[];
 
   @CreateDateColumn()

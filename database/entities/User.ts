@@ -8,7 +8,7 @@ export enum UserRole {
   STUDENT = "student",
 }
 
-@Entity()
+@Entity("user")
 export class User {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
@@ -30,9 +30,9 @@ export class User {
   role!: UserRole;
 
   // Relations
-  @OneToMany("Assignment", (assignment: any) => assignment.teacher)
+  @OneToMany("assignment", (assignment: any) => assignment.teacher)
   assignments!: Assignment[];
 
-  @OneToMany("Submission", (submission: any) => submission.student)
+  @OneToMany("submission", (submission: any) => submission.student)
   submissions!: Submission[];
 }
