@@ -41,6 +41,40 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["User"],
     }),
+
+
+    getAssignments: builder.query({
+      query: () => "/assignments",
+      providesTags: ["Assignment"],
+    }),
+    createAssignment: builder.mutation({
+      query: (newAssignment) => ({
+        url: "/assignments",
+        method: "POST",
+        body: newAssignment,
+      }),
+      invalidatesTags: ["Assignment"],
+    }),
+    getSubmissions: builder.query({
+      query: () => "/submissions",
+      providesTags: ["Submission"],
+    }),
+    createSubmission: builder.mutation({
+      query: (newSubmission) => ({
+        url: "/submissions",
+        method: "POST",
+        body: newSubmission,
+      }),
+      invalidatesTags: ["Submission"],
+    }),
+    getAssignmentById: builder.query({
+      query: (id) => `/assignments/${id}`,
+      providesTags: (result, error, id) => [{ type: "Assignment", id }],
+    }),
+    getSubmissionById: builder.query({
+      query: (id) => `/submissions/${id}`,
+      providesTags: (result, error, id) => [{ type: "Submission", id }],
+    }),
   }),
 });
 
@@ -49,4 +83,10 @@ export const {
   useRegisterMutation,
   useGetMeQuery,
   useLogoutMutation,
+  useGetAssignmentsQuery,
+  useGetAssignmentByIdQuery,
+  useGetSubmissionByIdQuery,
+  useCreateAssignmentMutation,
+  useGetSubmissionsQuery,
+  useCreateSubmissionMutation,
 } = apiSlice;

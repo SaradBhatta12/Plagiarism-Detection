@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 };
 
 import { StoreProvider } from "./store/StoreProvider";
+import { Header } from "@/components/layout/Header";
 
 import { Toaster } from "@/components/ui/toaster";
 
@@ -34,6 +35,7 @@ export default function RootLayout({
     >
       <body cz-shortcut-listen="true" className="min-h-full flex flex-col bg-slate-50">
         <StoreProvider>
+          <Header />
           <main className="flex-1">{children}</main>
           <Toaster />
         </StoreProvider>
