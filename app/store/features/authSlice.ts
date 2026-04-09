@@ -35,7 +35,6 @@ const authSlice = createSlice({
 
       // Set cookies with 7-day expiration
       Cookies.set("user", JSON.stringify(user), { expires: 7, path: "/" });
-      Cookies.set("token", token, { expires: 7, path: "/" });
     },
     logout: (state) => {
       state.user = null;
