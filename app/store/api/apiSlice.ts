@@ -75,6 +75,16 @@ export const apiSlice = createApi({
       query: (id) => `/submissions/${id}`,
       providesTags: (result, error, id) => [{ type: "Submission", id }],
     }),
+
+
+    runPlagiarismScan: builder.mutation({
+      query: (submissionId) => ({
+        url: "/plagiarism",
+        method: "POST",
+        body: { submissionId },
+      }),
+      invalidatesTags: (result, error, { submissionId }) => [{ type: "Submission", id: submissionId }],
+    }),
   }),
 });
 
@@ -89,4 +99,5 @@ export const {
   useCreateAssignmentMutation,
   useGetSubmissionsQuery,
   useCreateSubmissionMutation,
+  useRunPlagiarismScanMutation,
 } = apiSlice;

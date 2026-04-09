@@ -117,7 +117,6 @@ export function TeacherDashboard() {
             <TableRow>
               <TableHead className="w-[300px]">Assignment Details</TableHead>
               <TableHead>Submissions</TableHead>
-              <TableHead>Due Date</TableHead>
               <TableHead>Date Created</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
@@ -140,12 +139,6 @@ export function TeacherDashboard() {
                     <Users className="h-3 w-3 " />
                     {assignment.submissionsCount}
                   </Badge>
-                </TableCell>
-                <TableCell className="font-medium">
-                  <div className="flex items-center gap-1.5 text-xs">
-                    <Clock className="h-3.5 w-3.5" />
-                    {assignment.dueDate ? new Date(assignment.dueDate).toLocaleDateString() : "No deadline"}
-                  </div>
                 </TableCell>
                 <TableCell className="text-xs ">
                   {new Date(assignment.createdAt).toLocaleDateString()}

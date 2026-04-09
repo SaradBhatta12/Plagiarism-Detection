@@ -128,7 +128,6 @@ export function StudentDashboard() {
           <TableHeader>
             <TableRow className="hover:bg-transparent">
               <TableHead className="w-[300px]">Assignment</TableHead>
-              <TableHead>Deadline</TableHead>
               <TableHead className="text-right">Action</TableHead>
             </TableRow>
           </TableHeader>
