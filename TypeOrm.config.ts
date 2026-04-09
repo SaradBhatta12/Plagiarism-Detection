@@ -5,6 +5,7 @@ import { User } from "./database/entities/User";
 import { Assignment } from "./database/entities/Assignment";
 import { Submission } from "./database/entities/Submission";
 import { PlagiarismResult } from "./database/entities/PlagiarismResult";
+import { InitialSchema1775632044407 } from "./database/migrations/1775632044407-InitialSchema";
 
 config(); // Load environment variables from .env
 
@@ -18,7 +19,8 @@ export const AppDataSource = new DataSource({
   synchronize: false,
   logging: true,
   entities: [User, Assignment, Submission, PlagiarismResult],
-  migrations: [],
+  migrations: [InitialSchema1775632044407],
   subscribers: [],
+  ssl: process.env.DB_SSL === "true" ? { rejectUnauthorized: false } : false,
 });
 
